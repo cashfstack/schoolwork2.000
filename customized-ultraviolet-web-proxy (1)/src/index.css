@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void-900: #0a0a0f;
+  --color-void-800: #12121a;
+  --color-void-700: #1a1a27;
+  --color-void-600: #252535;
+  --color-void-500: #35354a;
+  --color-void-400: #4a4a65;
+  --color-void-300: #7070a0;
+  --color-void-200: #9090c0;
+  --color-void-100: #b8b8e0;
+  --color-accent-500: #6c5ce7;
+  --color-accent-400: #8b7cf7;
+  --color-accent-300: #a89bff;
+  --color-accent-600: #5a45d6;
+  --color-glow-blue: #4facfe;
+  --color-glow-purple: #6c5ce7;
+  --color-glow-pink: #f093fb;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #35354a #12121a;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: #12121a;
+}
+*::-webkit-scrollbar-thumb {
+  background: #35354a;
+  border-radius: 3px;
+}
+
+::selection {
+  background: rgba(108, 92, 231, 0.4);
+  color: white;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.glass {
+  background: rgba(18, 18, 26, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(108, 92, 231, 0.15);
+}
+
+.glass-strong {
+  background: rgba(18, 18, 26, 0.85);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.input-glow:focus-within {
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3), 0 0 30px rgba(108, 92, 231, 0.15);
+}
+
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #6c5ce7, #4facfe, #f093fb, #6c5ce7);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #6c5ce7, #4facfe, #a89bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.code-block {
+  background: #0d0d14;
+  border: 1px solid rgba(108, 92, 231, 0.15);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
